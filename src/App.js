@@ -1,40 +1,52 @@
-:root {
-  --bg: #0d0d0d;
-  --panel: #141414;
-  --border: #2a2a2a;
-  --text: #e6e6e6;
-  --muted: #9a9a9a;
-  --accent: #ff0040;
-  --accent-soft: #ff335f;
+import React from "react";
+import "./App.css";
+import { SITE, SECTIONS } from "./content";
+
+function Section({ title, items }) {
+  return (
+    <details className="doctrine-section fade-in" open={false}>
+      <summary className="doctrine-title">
+        <span className="title-text">{title}</span>
+        <span className="caret">▾</span>
+      </summary>
+      <div className="doctrine-content">
+        <ul className="doctrine-list">
+          {items.map((item, idx) => (
+            <li key={idx}>
+              <strong className="label">{item.label}:</strong> {item.text}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </details>
+  );
 }
 
-* { box-sizing: border-box; }
-html, body, #root { height: 100%; background: var(--bg); }
-body { margin: 0; color: var(--text); font-family: "Courier New", monospace; }
+function App() {
+  return (
+    <div className="App">
+      <header className="doctrine-header">
+        <h1 className="brand">{SITE.title}</h1>
+        <p className="tagline glitch" data-text={SITE.tagline}>
+          {SITE.tagline}
+        </p>
+      </header>
 
-.App { min-height: 100%; display: flex; flex-direction: column; }
+      <main className="container">
+        {SECTIONS.map((section) => (
+          <Section key={section.title} title={section.title} items={section.items} />
+        ))}
+      </main>
 
-.doctrine-header {
-  text-align: center;
-  padding: 3rem 1.25rem 2rem;
-  border-bottom: 1px solid var(--border);
-  background: linear-gradient(180deg, rgba(255,0,64,0.06), transparent 60%);
+      <footer className="doctrine-footer">
+        <p>© {new Date().getFullYear()} {SITE.owner} — {SITE.brand}</p>
+        <p className="footnote">{SITE.footerNote}</p>
+      </footer>
+    </div>
+  );
 }
 
-.brand {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 0.05em;
-}
-
-.tagline {
-  margin: 0.75rem auto 0;
-  color: var(--accent);
-  max-width: 900px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-}
-
+export default App;
 /* Glitch animation */
 .glitch {
   position: relative;
