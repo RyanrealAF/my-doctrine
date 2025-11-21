@@ -1,49 +1,35 @@
-import React from "react";
-import "./App.css";
-import { SITE, SECTIONS } from "./content";
+const content = [
+  {
+    title: 'I. Initiation and Profiling (The Setup)',
+    bullets: [
+      'Access and Infiltration: Trauma Twin mirroring vulnerabilities under handler direction.',
+      'Loyalty Test: Debit‑Card probe designed for failure; honesty broke the script.'
+    ]
+  },
+  {
+    title: 'II. Psychological and Social Discreditation',
+    bullets: [
+      'Pathologizing Dissent: Anger reframed as paranoia/mania.',
+      'Civilian Weaponization: Neighbors manipulated into accidental informants.',
+      'Narrative Entrapment: Routine behaviors reframed as sinister.'
+    ]
+  },
+  {
+    title: 'III. Escalation and Forensic Vulnerabilities',
+    bullets: [
+      'Coercive Escalation: Grocery cart incident revealed threat structure.',
+      'Plausible Deniability Shield: Small‑time enforcers used as expendables.',
+      'Systemic Data Debt: Anomalous clustering exposes orchestration.'
+    ]
+  },
+  {
+    title: 'IV. Strategic Counter‑Offensive',
+    bullets: [
+      'Trauma as Data: Controlled attrition acceptance reframes pain as incoming data.',
+      'Breadcrumb Web: Digital evidence log proving causal links.',
+      'Deterrence: Dead Man’s Switch ensures escalation costs are unacceptably high.'
+    ]
+  }
+];
 
-function Section({ title, items }) {
-  return (
-    <details className="doctrine-section fade-in" open={false}>
-      <summary className="doctrine-title">
-        <span className="title-text">{title}</span>
-        <span className="caret">▾</span>
-      </summary>
-      <div className="doctrine-content">
-        <ul className="doctrine-list">
-          {items.map((item, idx) => (
-            <li key={idx}>
-              <strong className="label">{item.label}:</strong> {item.text}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </details>
-  );
-}
-
-function App() {
-  return (
-    <div className="App">
-      <header className="doctrine-header">
-        <h1 className="brand">{SITE.title}</h1>
-        <p className="tagline glitch" data-text={SITE.tagline}>
-          {SITE.tagline}
-        </p>
-      </header>
-
-      <main className="container">
-        {SECTIONS.map((section) => (
-          <Section key={section.title} title={section.title} items={section.items} />
-        ))}
-      </main>
-
-      <footer className="doctrine-footer">
-        <p>© {new Date().getFullYear()} {SITE.owner} — {SITE.brand}</p>
-        <p className="footnote">{SITE.footerNote}</p>
-      </footer>
-    </div>
-  );
-}
-
-export default App;
+export default content;
